@@ -7,9 +7,7 @@ import { CalendarIcon, Clock, CheckCircle2, ArrowRight, ChevronLeft } from "luci
 import { cn } from "@/lib/utils";
 
 import { bookingServices } from "@/constants";
-
-// Fake data
-
+import ServiceCard from "./_components/ServiceCard";
 
 const generateFakeSlots = (date: string) => {
     console.log("Generating slots for", date);
@@ -55,23 +53,7 @@ export default function BookingPage() {
         setStep(5);
     };
 
-    const ServiceCard = ({ service }: { service: typeof bookingServices[0] }) => (
-        <motion.button
-            whileHover={{ scale: 1.02, y: -4 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => handleServiceSelect(service.id)}
-            className={cn(
-                "w-full p-6 text-left rounded-lg border transition-all duration-300",
-                selectedService === service.id
-                    ? "border-gold bg-gold/5 shadow-gold/10"
-                    : "border-sand-200/30 hover:border-gold/40 hover:shadow-gold/5 bg-white/5 backdrop-blur-sm"
-            )}
-        >
-            <h3 className="text-xl font-light font-cormorant text-cream-50 mb-2">{service.name}</h3>
-            <p className="text-sand-300/80 text-sm mb-3">{service.duration}</p>
-            <p className="text-gold font-light">{service.price}</p>
-        </motion.button>
-    );
+    
 
     const renderCalendar = () => {
         const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
@@ -169,7 +151,12 @@ export default function BookingPage() {
                             <h2 className="text-2xl font-light font-cormorant text-center mb-8">Select Service</h2>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {bookingServices.map((s) => (
-                                    <ServiceCard key={s.id} service={s} />
+                                    <ServiceCard
+                                        key={s.id}
+                                        service={s}
+                                        handleServiceSelect={handleServiceSelect}
+                                        selectedService={selectedService ?? ""}
+                                    />
                                 ))}
                             </div>
                         </motion.div>
@@ -268,7 +255,7 @@ export default function BookingPage() {
                                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                                         required
                                         className="w-full px-5 py-4 bg-white/5 border border-sand-300/20 rounded-lg text-cream-50 placeholder:text-sand-300/40 focus:border-gold/60 focus:outline-none transition-all"
-                                        placeholder="+256 7XX XXX XXX"
+                                        placeholder="+61 7XX XXX XXX"
                                     />
                                 </div>
 

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Award, Heart, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { VariantTestimonialsSection } from "@/components/variants/VariantTestimonialSection";
 
 export default function AboutPage() {
   return (
@@ -179,6 +180,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <VariantTestimonialsSection />
 
 
       {/* Final CTA */}

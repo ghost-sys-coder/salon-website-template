@@ -13,7 +13,7 @@ const navLinks = [
   { label: "About Us", href: "/about" },
   { label: "Gallery", href: "/gallery" },
   { label: "Testimonials", href: "/#testimonials" },
-  { label: "Contact", href: "/booking" }, // changed to #booking for consistency
+  { label: "Contact", href: "/contact" }, // changed to #booking for consistency
 ];
 
 export default function Navbar() {

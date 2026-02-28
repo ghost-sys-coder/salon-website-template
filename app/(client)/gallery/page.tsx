@@ -5,6 +5,7 @@ import { ArrowRight, Heart, Share2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { galleryImages } from "@/constants/images";
+import { VariantTestimonialsSection } from "@/components/variants/VariantTestimonialSection";
 
 
 export default function GalleryPage() {
@@ -164,6 +165,8 @@ export default function GalleryPage() {
                     </div>
                 </div>
             </section>
+
+            <VariantTestimonialsSection />
 
             {/* Final CTA */}
             <section className="py-20 bg-linear-to-b from-obsidian to-obsidian/90 text-center">

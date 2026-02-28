@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ServiceCardItem from "./_components/ServiceCardItem";
+import { VariantTestimonialsSection } from "@/components/variants/VariantTestimonialSection";
 
 interface ServiceItem {
   category: string;
@@ -18,21 +20,21 @@ const services: ServiceItem[] = [
     name: "Precision Cut & Style",
     description:
       "Expertly tailored cuts with luxurious finishing touches for effortless elegance.",
-    startingPrice: "From UGX 120,000",
+    startingPrice: "From USD 120",
   },
   {
     category: "Hair Styling",
     name: "Signature Balayage & Colour",
     description:
       "Hand-painted dimensional colour by master colourists trained in Paris and New York.",
-    startingPrice: "From UGX 450,000",
+    startingPrice: "From USD 250",
   },
   {
     category: "Hair Styling",
     name: "Keratin Smoothing Treatment",
     description:
       "Transform frizz into silky, manageable hair with long-lasting results.",
-    startingPrice: "From UGX 650,000",
+    startingPrice: "From USD 300",
   },
 
   // Braiding
@@ -41,21 +43,21 @@ const services: ServiceItem[] = [
     name: "Classic Box Braids",
     description:
       "Neat, protective style with premium synthetic or human hair extensions.",
-    startingPrice: "From UGX 280,000",
+    startingPrice: "From USD 150",
   },
   {
     category: "Braiding",
     name: "Cornrows & Feed-In Braids",
     description:
       "Intricate patterns and flawless execution for both protective and expressive looks.",
-    startingPrice: "From UGX 180,000",
+    startingPrice: "From USD 100",
   },
   {
     category: "Braiding",
     name: "Knotless Braids",
     description:
       "Gentle, natural-looking installation with minimal tension on the scalp.",
-    startingPrice: "From UGX 350,000",
+    startingPrice: "From USD 350",
   },
 
   // Nails
@@ -64,21 +66,21 @@ const services: ServiceItem[] = [
     name: "Couture Manicure",
     description:
       "Luxury nail shaping, cuticle care, and premium polish application.",
-    startingPrice: "From UGX 80,000",
+    startingPrice: "From USD 80",
   },
   {
     category: "Nails",
     name: "Gel X / Acrylic Extensions",
     description:
       "Durable, lightweight extensions with custom nail art and 3D embellishments.",
-    startingPrice: "From UGX 180,000",
+    startingPrice: "From USD 180",
   },
   {
     category: "Nails",
     name: "Spa Pedicure",
     description:
       "Deep exfoliation, hot stone massage, and long-lasting polish or gel finish.",
-    startingPrice: "From UGX 120,000",
+    startingPrice: "From USD 120",
   },
 
   // Makeup
@@ -87,21 +89,21 @@ const services: ServiceItem[] = [
     name: "Natural Glow Makeup",
     description:
       "Flawless, radiant base with soft definition for everyday elegance.",
-    startingPrice: "From UGX 150,000",
+    startingPrice: "From USD 150",
   },
   {
     category: "Makeup",
     name: "Full Glam Bridal Makeup",
     description:
       "Airbrushed perfection, long-wear formula, and trial session included.",
-    startingPrice: "From UGX 450,000",
+    startingPrice: "From USD 250",
   },
   {
     category: "Makeup",
     name: "Event / Editorial Makeup",
     description:
       "Bold, camera-ready looks tailored for photoshoots, galas, and special occasions.",
-    startingPrice: "From UGX 250,000",
+    startingPrice: "From USD 250",
   },
 
   // Treatment Packages
@@ -110,21 +112,21 @@ const services: ServiceItem[] = [
     name: "Ultimate Relaxation Day",
     description:
       "60-min massage + luxury facial + scalp treatment + express manicure.",
-    startingPrice: "From UGX 550,000",
+    startingPrice: "From USD 550",
   },
   {
     category: "Treatment Packages",
     name: "Bridal Beauty Prep Package",
     description:
       "Trial makeup + hair trial + pre-wedding facial + lash lift & tint.",
-    startingPrice: "From UGX 1,200,000",
+    startingPrice: "From USD 1,200",
   },
   {
     category: "Treatment Packages",
     name: "Wellness Rejuvenation",
     description:
       "Deep tissue massage + hydrating facial + aromatherapy scalp massage.",
-    startingPrice: "From UGX 380,000",
+    startingPrice: "From USD 380",
   },
 ];
 
@@ -175,59 +177,11 @@ export default function ServicesPage() {
               const categoryServices = services.filter((s) => s.category === category);
 
               return (
-                <div key={category} className="mb-24 last:mb-0">
-                  <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.9 }}
-                    className="text-4xl sm:text-5xl font-light text-obsidian font-cormorant mb-12 text-center"
-                  >
-                    {category}
-                  </motion.h2>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-                    {categoryServices.map((service, idx) => (
-                      <motion.div
-                        key={service.name}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: idx * 0.1 }}
-                        className={cn(
-                          "group relative bg-white/5 backdrop-blur-sm border border-sand-200/20 rounded-lg p-8",
-                          "hover:border-gold/40 hover:shadow-gold/10 transition-all duration-500"
-                        )}
-                      >
-                        <h3 className="text-cream-50 text-2xl font-light font-cormorant mb-4 group-hover:text-gold transition-colors">
-                          {service.name}
-                        </h3>
-
-                        <p className="text-sand-300/80 text-base leading-relaxed mb-6">
-                          {service.description}
-                        </p>
-
-                        <div className="flex items-center justify-between">
-                          <span className="text-gold text-xl font-light font-cormorant">
-                            {service.startingPrice}
-                          </span>
-
-                          <a
-                            href="#booking"
-                            className={cn(
-                              "inline-flex items-center gap-2 px-6 py-3 border border-gold/40 text-gold",
-                              "hover:bg-gold hover:text-obsidian transition-all duration-500",
-                              "text-sm uppercase tracking-[0.2rem] font-light rounded-sm"
-                            )}
-                          >
-                            Book Now
-                            <ArrowRight size={14} />
-                          </a>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
+                <ServiceCardItem
+                  key={category}
+                  category={category}
+                  categoryServices={categoryServices}
+                />
               );
             }
           )}
@@ -250,7 +204,7 @@ export default function ServicesPage() {
             Book your appointment today and experience the Maison Élara difference.
           </p>
           <motion.a
-            href="#booking"
+            href="/booking"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -266,6 +220,8 @@ export default function ServicesPage() {
           </motion.a>
         </div>
       </section>
+
+      <VariantTestimonialsSection />
     </div>
   );
 }
