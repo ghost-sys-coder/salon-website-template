@@ -3,6 +3,7 @@ import { Jost, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import { VariantFooter } from "@/components/variants/VariantFooterSection";
+import { Toaster } from "sonner";
 
 // import { FooterSection } from "@/components/shared/FooterSection";
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           {/* <FooterSection /> Original footer section */}
           <VariantFooter />
         </main>
+        <Toaster />
       </body>
     </html>
   );
